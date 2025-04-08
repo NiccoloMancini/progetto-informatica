@@ -2,7 +2,7 @@
     session_start();
     include("connessione.php");
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password = hash("sha256", $_POST["password"]);
     if($conn->query("SELECT username FROM UTENTE where username = '$username'")->num_rows>0){
       if($conn->query("SELECT username FROM UTENTE where username = '$username' AND passwd = '$password'")->num_rows>0){
         $_SESSION["erroreLogin"] = 0;
