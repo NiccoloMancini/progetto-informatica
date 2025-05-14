@@ -1,8 +1,29 @@
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(255, 158, 11, 0.5));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 20px rgba(255, 158, 11, 1));
+    }
+}
+
 #index{
     background-image: url("../images/2094221-astratto-sfocato-ristorante-sfondo-gratuito-foto.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
 }
 
 .divInTheMiddle{
@@ -10,5 +31,78 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.stelleValutazione {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    flex-direction: row-reverse;
+}
+
+.stelleValutazione>input {
+    position: absolute;
+    appearance: none;
+}
+
+.stelleValutazione>label {
+    cursor: pointer;
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.stelleValutazione>label>svg {
+    fill: #666;
+    transition: fill 0.3s ease;
+}
+
+.stelleValutazione>label::before,
+.stelleValutazione>label::after {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #ff9e0b;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.stelleValutazione>label::before {
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+}
+
+.stelleValutazione>label::after {
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+}
+
+.stelleValutazione>label:hover::before,
+.stelleValutazione>label:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.5);
+}
+
+.stelleValutazione>label:hover {
+    transform: scale(1.2);
+    animation: pulse 0.6s infinite alternate;
+}
+
+.stelleValutazione>label:hover>svg,
+.stelleValutazione>label:hover~label>svg {
+    fill: #ff9e0b;
+    animation: shimmer 1s ease infinite alternate;
+}
+
+.stelleValutazione>input:checked+label>svg,
+.stelleValutazione>input:checked+label~label>svg {
+    fill: #ff9e0b;
+    animation: pulse 0.8s infinite alternate;
 }
                 
