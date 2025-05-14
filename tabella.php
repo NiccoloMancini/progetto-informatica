@@ -1,7 +1,4 @@
-<table class="table text-center w-50 mx-auto">
-  <tr>
-  <?php
-    echo "<th>nome</th> <th>indirizzo</th> <th>voto</th> <th>data</th>";
+<?php
     echo "</tr>";
     while($row = $result->fetch_assoc()) {
       echo "<tr>";

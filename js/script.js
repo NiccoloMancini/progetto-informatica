@@ -13,3 +13,8 @@ function ChiudiFinestra(){
   bg.classList.remove("opacity-50");
   document.getElementById("divInTheMiddle").classList.remove("op-1");
 }
+
+function nuovoRistorante(){
+  let finestra = document.getElementById("nuovoRistorante");
+  finestra.classList.toggle("d-none");
+}

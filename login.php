@@ -7,7 +7,13 @@
       if($conn->query("SELECT username FROM UTENTE where username = '$username' AND passwd = '$password'")->num_rows>0){
         $_SESSION["erroreLogin"] = 0;
         $_SESSION["usernamelog"] = $username;
-        header("Location: benvenuto.php");
+        if ($username=="admin") {
+          $_SESSION["admin"]=1;
+          header("Location: pannelloAdmin.php");
+        }else{
+          $_SESSION["admin"]=0;
+          header("Location: benvenuto.php");
+        }
       }else{
         $_SESSION["erroreLogin"] = 1;
         header("Location: index.php");
