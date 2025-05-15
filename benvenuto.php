@@ -32,7 +32,14 @@
         }else{
           echo "<p class='text-danger'>Nessuna recensione effettuata!</p>";
         }
-      ?>
+      ?><br>
+      <div>
+        <h2>Specifiche ristorante</h2>
+        <form action="info_ristorante.php" method="post">
+          <?php include("selectRistoranti.php");?><br>
+          <button type="submit" class="btn btn-success">Invia</button>
+        </form>
+      </div>
       <div class="d-none" id="nuovoRistorante">
       <h2>Lascia una nuova recensione</h2>
       <form action="./inserisciRecensione.php" method="post" class="mb-3">
@@ -78,8 +85,8 @@
           ?>
       </form>
       </div>
-      <button type="button" class="btn btn-success" onclick="nuovoRistorante()">Nuova Recensione</button>
       <div class="text-end">
+        <button type="button" class="btn btn-success" onclick="nuovoRistorante()">Nuova Recensione</button><br><br>
         <button type="submit" class="btn btn-danger" onclick="ApriFinestra()">Logout</button>
       </div>
       <div id="apriChiudiFinestra" class=" divInTheMiddle d-none bg-white p-5 rounded-3 op-1" >
@@ -91,6 +98,7 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="js/script.js"></script>
   </body>
 </html>
