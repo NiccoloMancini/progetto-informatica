@@ -30,4 +30,8 @@ function onMapClick(e) {
     alert("You clicked the map at " + e.latlng);
 }
 
+function caricaMarker(lat, long){
+  var marker = L.marker([lat, long]).addTo(map);
+}
+
 map.on('click', onMapClick)

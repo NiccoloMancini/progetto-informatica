@@ -1,6 +1,9 @@
 <?php
   session_start();
   include("connessione.php");
+  $ristorante = $_POST["ristorante"];
+  $lat = $conn->query("SELECT latitudine FROM ristorante WHERE id_ristorante = $ristorante")->fetch_assoc()["latitudine"];
+  $long = $conn->query("SELECT longitudine FROM ristorante WHERE id_ristorante = $ristorante")->fetch_assoc()["longitudine"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,19 +15,13 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="./css/styles.css">
   </head>
-  <body id="index">
+  <body id="index" onload="caricaMarker(<?php echo $lat . ', ' . $long?>)">
     <div class="mx-auto w-75 rounded-3 p-4 bg-white mt-5">
-      <h1 class="mb-5 mt-3">Specifiche ristorante</h1>
       <?php
-        $ristorante = $_POST["ristorante"];
         $result2 = $conn->query("SELECT * FROM ristorante WHERE id_ristorante = $ristorante");
         $row = $result2->fetch_assoc();
-        echo "<ul>";
-        echo "<li>Nome: " . $row["nome"] . "</li>";
-        echo "<li>Indirizzo: " . $row["indirizzo"] . " " . $row["civico"] . "</li>";
-        echo "<li>CAP: " . $row["CAP"] . "</li>";
-        echo "<li>Città: " . $row["citta"] . "</li>";
-        echo "</ul>";
+        echo "<h1 class='mt-3'>" . $row["nome"] . "</h1>";
+        echo "<p><i>indirizzo: " . $row["indirizzo"] . " " . $row["civico"] . ", " . $row["citta"] . "</i></p>";
         ?>
         <h1 class="my-3">Recensioni ristorante</h1>
         <table class="table text-center w-50 mx-auto">

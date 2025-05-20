@@ -17,6 +17,7 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body id="index">
@@ -29,7 +30,7 @@
         <tr>
         <?php
         if ($result->num_rows>0){
-            echo "<th>id_ristorante</th> <th>nome</th> <th>indirizzo</th> <th>civico</th> <th>CAP</th> <th>città</th> <th>tot_recensioni</th>";
+            echo "<th>id_ristorante</th> <th>nome</th> <th>indirizzo</th> <th>civico</th> <th>CAP</th> <th>città</th> <th>latitudine</th> <th>longitudine</th> <th>tot_recensioni</th>";
             include("tabella.php"); 
         }else{
             echo "<p class='text-danger'>Nessuna ristorante presente!</p>";
@@ -76,7 +77,12 @@
               }
           ?>
         </form>
+      
+
       </div>
+
+          <div id="map"></div>
+
       <div class="text-center">
         <button type="button" class="btn btn-success" onclick="nuovoRistorante()">Inserisci ristornate</button>
       </div>
@@ -90,6 +96,8 @@
           <button type="submit" class="btn btn-outline-danger">Logout</button>
         </form>
       </div>
+                
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
