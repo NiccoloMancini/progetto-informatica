@@ -1,8 +1,5 @@
 <?php
   session_start();
-  if(!isset($_SESSION["erroreLogin"])){
-    $_SESSION["erroreLogin"] = -1;
-  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,33 +11,44 @@
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body id="index">
-    <h1 class="text-center mb-5 mt-3">Login</h1>
-    <div class="mx-auto w-25 rounded-3 p-4 bg-white">
-    <form action="./login.php" method="post">
-      <label for="lname" class="fw-bold">Username</label>
-      <div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" aria-describedby="basic-addon1" name="username">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid d-flex flex-column align-items-center">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link active px-3" aria-current="page" href="./index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="./tuttiRistoranti.php">Tutti i Ristoranti</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="#">Scrivi una Recensione</a>
+                </li>
+            </ul>
+            <form class="d-flex" action="./paginaLogin.php" method="post">
+                <button class="btn btn-outline-success px-3" type="submit">Login</button>
+            </form>
         </div>
+    </div>
+  </nav>
+  <div class="mx-auto w-75 rounded-3 p-4 bg-white mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <p>Benvenuto su <strong>[Nome del sito]</strong>, la piattaforma dedicata a chi ama scoprire nuovi ristoranti e condividere la propria esperienza culinaria! <br>Il nostro obiettivo è offrire uno spazio libero e trasparente dove ogni utente può leggere e scrivere recensioni sincere sui ristoranti che ha visitato. Che si tratti di una cena romantica, di un pranzo di lavoro o di una semplice uscita tra amici, ogni opinione conta e può aiutare altri a scegliere il locale perfetto. Siamo un team appassionato di buon cibo, qualità e condivisione. Crediamo che una recensione autentica valga più di mille pubblicità, ed è per questo che mettiamo al centro le esperienze reali dei nostri utenti.</p>
       </div>
-      <label for="lname" class="fw-bold">Password</label>
-      <div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" aria-describedby="basic-addon1" name="password">
-        </div>
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <img src="./images/logo.png" class="w-100" alt="Logo Icchesimangia?">
       </div>
-      <?php
-        if ($_SESSION["erroreLogin"] == 1) {
-          echo "<p class='fw-bold text-danger'>Password errata</p>";
-        }else if ($_SESSION["erroreLogin"] == 2){
-          echo "<p class='fw-bold text-danger'>Username errato</p>";
-        }
-        $_SESSION["erroreLogin"] = -1;
-      ?>
-      <button type="submit" class="btn btn-success fw-bold">Invia</button>
-      <p class="mb-0 mt-3">Non hai un account? <a href="./registrazione.php">Registrati</a></p>
-    </form>
+    </div>
   </div>
+</div>
+  </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

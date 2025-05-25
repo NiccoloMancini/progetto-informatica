@@ -1,7 +1,7 @@
 <?php
     session_start();
     if ($_SESSION["erroreLogin"] == -1) {
-      header("Location: index.php");
+      header("Location: paginaLogin.php");
     }
 
     include("connessione.php");
@@ -36,7 +36,9 @@
       <div>
         <h2>Specifiche ristorante</h2>
         <form action="info_ristorante.php" method="post">
+        <select class="form-select w-25 mb-3" name="ristorante" required>
           <?php include("selectRistoranti.php");?><br>
+        </select>
           <button type="submit" class="btn btn-success">Invia</button>
         </form>
       </div>
@@ -75,7 +77,9 @@
                   </svg>
               </label>
           </div> <br>
-          <?php include("selectRistoranti.php");?><br>
+          <select class="form-select w-25 mb-3" name="ristorante" required>
+            <?php include("selectRistoranti.php");?><br>
+          </select>
           <button type="submit" class="btn btn-success">Invia</button>
           <?php
               if (isset($_SESSION["esitoRecensione"])) {

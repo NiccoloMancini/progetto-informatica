@@ -1,7 +1,7 @@
 <?php
     session_start();
     if ($_SESSION["erroreLogin"] == -1) {
-        header("Location: index.php");
+        header("Location: paginaLogin.php");
     }
     if ($_SESSION["admin"]!=1) {
         header("Location: logout.php");
@@ -77,12 +77,8 @@
               }
           ?>
         </form>
-      
-
       </div>
-
-          <div id="map"></div>
-
+      <div id="map"></div>
       <div class="text-center">
         <button type="button" class="btn btn-success" onclick="nuovoRistorante()">Inserisci ristornate</button>
       </div>

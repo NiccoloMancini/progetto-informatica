@@ -12,7 +12,7 @@
       if($conn->query("SELECT email FROM UTENTE where email = '$email1'")->num_rows == 0){
         if ($conn->query("INSERT INTO UTENTE (username, passwd, nome, cognome, email) VALUES ('$username', '$password', '$nome', '$cognome', '$email1')")) {
           $_SESSION["erroreRegistrazione"] = 0;
-          header("Location: index.php");
+          header("Location: paginaLogin.php");
         }
       }else{
         $_SESSION["erroreRegistrazione"] = 1;
