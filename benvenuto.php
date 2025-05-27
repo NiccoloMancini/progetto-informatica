@@ -17,18 +17,37 @@
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body id="index">
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="./images/logo.png" width="50" height="44" class="d-inline-block align-text-top"><span><b>ICCHESIMANGIA</b></span>
+        </a>
+        <button type="submit" class="btn btn-outline-danger" onclick="ApriFinestra()">Logout</button>
+      </div>
+    </nav>
     <div class="mx-auto w-75 rounded-3 p-4 bg-white mt-5">
       <?php
         echo "<h1>Benvenuto " . $_SESSION["usernamelog"] . "</h1>";
         echo "<h4>Numero di recensioni effettuate: " . $conn->query("SELECT COUNT(*) as tot FROM recensione AS r JOIN utente AS u ON r.id_utente = u.id_utente WHERE u.username = '" . $_SESSION["usernamelog"] ."'")->fetch_assoc()["tot"] . "</h4>";
-        $result = $conn->query("SELECT ri.nome, ri.indirizzo, re.voto, re.data FROM ristorante AS ri JOIN recensione AS re ON ri.id_ristorante = re.id_ristorante JOIN utente AS u ON re.id_utente = u.id_utente WHERE u.username = '" . $_SESSION["usernamelog"] . "'");
+        $result = $conn->query("SELECT ri.nome, ri.indirizzo, re.voto, re.data, re.id_recensione FROM ristorante AS ri JOIN recensione AS re ON ri.id_ristorante = re.id_ristorante JOIN utente AS u ON re.id_utente = u.id_utente WHERE u.username = '" . $_SESSION["usernamelog"] . "'");
         ?>
         <table class="table text-center w-50 mx-auto">
         <tr>
         <?php
         if ($result->num_rows>0){
-          echo "<th>nome</th> <th>indirizzo</th> <th>voto</th> <th>data</th>";
-          include("tabella.php"); 
+          echo "<th>nome</th> <th>indirizzo</th> <th>voto</th> <th>data</th> <th>Elimina</th> </tr>";
+          while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["nome"] . "</td>";
+            echo "<td>" . $row["indirizzo"] . "</td>";
+            echo "<td>" . $row["voto"] . "</td>";
+            echo "<td>" . $row["data"] . "</td>";
+            echo "<td><form action='./eliminaRecensione.php' method='post'>";
+            echo "<button type='submit' class='btn btn-danger' value='" . $row["id_recensione"] ."' name='id_tabella'>Elimina</button>";
+            echo "</form></td>";
+            echo "</tr>";
+          }
+          echo "</table>";
         }else{
           echo "<p class='text-danger'>Nessuna recensione effettuata!</p>";
         }
@@ -91,7 +110,6 @@
       </div>
       <div class="text-end">
         <button type="button" class="btn btn-success" onclick="nuovoRistorante()">Nuova Recensione</button><br><br>
-        <button type="submit" class="btn btn-danger" onclick="ApriFinestra()">Logout</button>
       </div>
       <div id="apriChiudiFinestra" class=" divInTheMiddle d-none bg-white p-5 rounded-3 op-1" >
         <button type="button" class="btn btn-danger fw-bold" onclick="ChiudiFinestra()">X</button>

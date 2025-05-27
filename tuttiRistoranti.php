@@ -27,12 +27,6 @@
         <li class="nav-item">
           <a class="nav-link px-3" href="./tuttiRistoranti.php">Tutti i Ristoranti</a>
         </li>
-        <a class="navbar-brand" href="#">
-            <img src="./images/logo.png" alt="Bootstrap" width="30" height="24">
-        </a>
-        <li class="nav-item">
-          <a class="nav-link px-3" href="#">Chi Siamo</a>
-        </li>
       </ul>
       <form class="d-flex" action="./paginaLogin.php" method="post">
         <button class="btn btn-outline-success px-3" type="submit">Login</button>

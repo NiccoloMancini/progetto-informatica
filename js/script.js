@@ -25,13 +25,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-
-function onMapClick(e) {
-    alert("You clicked the map at " + e.latlng);
-}
-
 function caricaMarker(lat, long){
   var marker = L.marker([lat, long]).addTo(map);
 }
 
-map.on('click', onMapClick)

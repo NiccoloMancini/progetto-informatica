@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body id="index">
+    <div class="mx-auto w-50 rounded-3 p-4 bg-white mt-5">
     <h1 class="text-center mb-5 mt-3">Login</h1>
-    <div class="mx-auto w-25 rounded-3 p-4 bg-white">
     <form action="./login.php" method="post">
       <label for="lname" class="fw-bold">Username</label>
       <div>

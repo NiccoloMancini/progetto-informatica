@@ -25,9 +25,6 @@
                 <li class="nav-item">
                     <a class="nav-link px-3" href="./tuttiRistoranti.php">Tutti i Ristoranti</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="#">Scrivi una Recensione</a>
-                </li>
             </ul>
             <form class="d-flex" action="./paginaLogin.php" method="post">
                 <button class="btn btn-outline-success px-3" type="submit">Login</button>
@@ -39,7 +36,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6">
-        <p>Benvenuto su <strong>[Nome del sito]</strong>, la piattaforma dedicata a chi ama scoprire nuovi ristoranti e condividere la propria esperienza culinaria! <br>Il nostro obiettivo è offrire uno spazio libero e trasparente dove ogni utente può leggere e scrivere recensioni sincere sui ristoranti che ha visitato. Che si tratti di una cena romantica, di un pranzo di lavoro o di una semplice uscita tra amici, ogni opinione conta e può aiutare altri a scegliere il locale perfetto. Siamo un team appassionato di buon cibo, qualità e condivisione. Crediamo che una recensione autentica valga più di mille pubblicità, ed è per questo che mettiamo al centro le esperienze reali dei nostri utenti.</p>
+        <p>Benvenuto su <strong>ICCHESIMANGIA</strong>, la piattaforma dedicata a chi ama scoprire nuovi ristoranti e condividere la propria esperienza culinaria! <br>Il nostro obiettivo è offrire uno spazio libero e trasparente dove ogni utente può leggere e scrivere recensioni sincere sui ristoranti che ha visitato. Che si tratti di una cena romantica, di un pranzo di lavoro o di una semplice uscita tra amici, ogni opinione conta e può aiutare altri a scegliere il locale perfetto. Siamo un team appassionato di buon cibo, qualità e condivisione. Crediamo che una recensione autentica valga più di mille pubblicità, ed è per questo che mettiamo al centro le esperienze reali dei nostri utenti.</p>
       </div>
       <div class="col-6 d-flex justify-content-center align-items-center">
         <img src="./images/logo.png" class="w-100" alt="Logo Icchesimangia?">

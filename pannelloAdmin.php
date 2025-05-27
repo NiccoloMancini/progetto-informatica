@@ -69,6 +69,18 @@
               <input type="text" class="form-control" aria-describedby="basic-addon1" name="citta">
             </div>
           </div>
+          <label for="lname" class="fw-bold">Latitudine</label>
+          <div>
+            <div class="input-group mb-3 w-25 mx-auto">
+              <input type="text" class="form-control" aria-describedby="basic-addon1" name="latitudine">
+            </div>
+          </div>
+          <label for="lname" class="fw-bold">Longitudine</label>
+          <div>
+            <div class="input-group mb-3 w-25 mx-auto">
+              <input type="text" class="form-control" aria-describedby="basic-addon1" name="longitudine">
+            </div>
+          </div>
           <button type="submit" class="btn btn-success">Invia</button>
           <?php
           if (isset($_SESSION["esitoRecensioneAdmin"])) {
@@ -78,7 +90,6 @@
           ?>
         </form>
       </div>
-      <div id="map"></div>
       <div class="text-center">
         <button type="button" class="btn btn-success" onclick="nuovoRistorante()">Inserisci ristornate</button>
       </div>

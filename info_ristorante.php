@@ -22,20 +22,29 @@
         $row = $result2->fetch_assoc();
         echo "<h1 class='mt-3'>" . $row["nome"] . "</h1>";
         echo "<p><i>indirizzo: " . $row["indirizzo"] . " " . $row["civico"] . ", " . $row["citta"] . "</i></p>";
-        ?>
-        <h1 class="my-3">Recensioni ristorante</h1>
-        <table class="table text-center w-50 mx-auto">
-        <tr>
-        <?php
-        $result = $conn->query("SELECT id_utente, voto, `data` FROM recensione WHERE id_ristorante = $ristorante");
-        if ($result->num_rows>0){
-          echo "<th>id_utente</th> <th>voto</th> <th>data</th>";
-          include("tabella.php"); 
-        }else{
-          echo "<p class='text-danger'>Nessuna recensione effettuata!</p>";
-        }
       ?>
-       <div id="map"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+              <h1 class="my-3">Recensioni ristorante</h1>
+              <table class="table text-center w-100 mx-auto">
+              <tr>
+              <?php
+              $result = $conn->query("SELECT id_utente, voto, `data` FROM recensione WHERE id_ristorante = $ristorante");
+              if ($result->num_rows>0){
+                echo "<th>id_utente</th> <th>voto</th> <th>data</th>";
+                include("tabella.php"); 
+              }else{
+                echo "<p class='text-danger'>Nessuna recensione effettuata!</p>";
+              }
+            ?>
+          </div>
+          <div class="col-6">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+       <a href="./benvenuto.php"><button type="button" class="btn btn-danger mt-5">Indietro</button></a>
       </div>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
