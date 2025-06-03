@@ -8,43 +8,64 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profilo Utente - ICCHESIMANGIA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="./css/styles.css">
   </head>
-  <body id="index">
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="./images/logo.png" width="50" height="44" class="d-inline-block align-text-top"><span><b>ICCHESIMANGIA</b></span>
+  <body id="index" class="bg-light">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="./images/logo.png" alt="Logo" width="50" height="44" class="me-2 rounded">
+        <span class="fs-4 fw-bold">ICCHESIMANGIA</span>
+      </a>
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <a href="./profilo.php" class="btn btn-outline-primary d-flex align-items-center gap-1">
+          <i class="bi bi-person fs-5"></i>
         </a>
-        <div class="nav-item">
-          <a href="./profilo.php"><button class="btn"><i class="bi bi-person"></i></button></a>
-          <a href="./cambio_password.php"><button class="btn"><i class="bi bi-gear-wide-connected"></i></button></a>
-          <button type="submit" class="btn btn-outline-danger" onclick="ApriFinestra()">Logout</button>
+        <a href="./cambio_password.php" class="btn btn-outline-primary d-flex align-items-center gap-1">
+          <i class="bi bi-gear-wide-connected fs-5"></i>
+        </a>
+        <button type="button" class="btn btn-outline-danger d-flex align-items-center gap-1" onclick="ApriFinestra()">
+          <i class="bi bi-box-arrow-right fs-5"></i> Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+    <main class="container my-5">
+      <div class="card mx-auto w-75 shadow-sm rounded-4">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">Informazioni Profilo</h2>
+        </div>
+        <div class="card-body">
+          <?php
+            if ($result = $conn->query("SELECT username, nome, cognome, email, data_registrazione FROM utente WHERE username = '" . $_SESSION["usernamelog"] . "'")) {
+              $row = $result->fetch_assoc();
+              echo '<ul class="list-group">';
+              echo '<li class="list-group-item d-flex justify-content-between align-items-center">Username <span class="fw-semibold">' . htmlspecialchars($row["username"]) . '</span></li>';
+              echo '<li class="list-group-item d-flex justify-content-between align-items-center">Nome <span class="fw-semibold">' . htmlspecialchars($row["nome"]) . '</span></li>';
+              echo '<li class="list-group-item d-flex justify-content-between align-items-center">Cognome <span class="fw-semibold">' . htmlspecialchars($row["cognome"]) . '</span></li>';
+              echo '<li class="list-group-item d-flex justify-content-between align-items-center">Email <span class="fw-semibold">' . htmlspecialchars($row["email"]) . '</span></li>';
+              echo '<li class="list-group-item d-flex justify-content-between align-items-center">Registrato dal <span class="fw-semibold">' . htmlspecialchars($row["data_registrazione"]) . '</span></li>';
+              echo '</ul>';
+            }
+          ?>
         </div>
       </div>
-    </nav>
-    <div id="principal-div" class="mx-auto w-75 rounded-3 p-4 bg-white mt-5">
-      <?php
-        if($result = $conn->query("SELECT username, nome, cognome, email, data_registrazione FROM utente WHERE username = '" . $_SESSION["usernamelog"] . "'")){
-          echo "<li>";
-          echo "<ul></ul>"
-        }
-      ?>
+    </main>
+
+    <div id="apriChiudiFinestra" class="divInTheMiddle d-none bg-white p-5 rounded-3 text-center shadow-lg">
+      <button type="button" class="btn btn-danger fw-bold position-absolute top-0 end-0 m-3" onclick="ChiudiFinestra()">×</button>
+      <p class="fs-2 fw-bold mt-4">EFFETTUA LOGOUT?</p>
+      <form action="./logout.php">
+        <button type="submit" class="btn btn-outline-danger">Logout</button>
+      </form>
     </div>
-    <div id="apriChiudiFinestra" class=" divInTheMiddle d-none bg-white p-5 rounded-3" >
-        <button type="button" class="btn btn-danger fw-bold" onclick="ChiudiFinestra()">X</button>
-        <p class="fs-1 fw-bold">EFFETTUA LOGOUT?</p>
-        <form action="./logout.php">
-          <button type="submit" class="btn btn-outline-danger">Logout</button>
-        </form>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
