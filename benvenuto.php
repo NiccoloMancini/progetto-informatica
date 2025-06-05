@@ -18,14 +18,14 @@
   <body id="index" class="bg-light">
   <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
   <div class="container-fluid">
-    <!-- Sinistra: logo + scritta -->
     <a class="navbar-brand d-flex align-items-center" href="#">
       <img src="./images/logo.png" alt="Logo" width="50" height="44" class="me-2 rounded">
       <span class="fs-4 fw-bold">ICCHESIMANGIA</span>
     </a>
-
-    <!-- Destra: pulsanti -->
     <div class="d-flex align-items-center gap-2 ms-auto">
+      <a href="./benvenuto.php" class="btn btn-outline-primary d-flex align-items-center gap-1">
+        <i class="bi bi-house fs-5"></i>
+      </a>
       <a href="./profilo.php" class="btn btn-outline-primary d-flex align-items-center gap-1">
         <i class="bi bi-person fs-5"></i>
       </a>
@@ -38,14 +38,12 @@
     </div>
   </div>
 </nav>
-
     <div id="principal-div" class="mx-auto w-75 rounded-3 p-4 bg-white mt-5 shadow-sm">
       <?php
         echo "<h1 class='mb-3 text-center'>Benvenuto <span class='text-primary fw-bold'>" . $_SESSION["usernamelog"] . "</span></h1>";
         echo "<h4 class='mb-4 text-muted text-center'>Hai effettuato <span class='badge bg-success'><strong>" . $conn->query("SELECT COUNT(*) as tot FROM recensione AS r JOIN utente AS u ON r.id_utente = u.id_utente WHERE u.username = '" . $_SESSION["usernamelog"] ."'")->fetch_assoc()["tot"] . "</strong></span> recensioni</h4>";
         $result = $conn->query("SELECT ri.nome, ri.indirizzo, re.voto, re.data, re.id_recensione FROM ristorante AS ri JOIN recensione AS re ON ri.id_ristorante = re.id_ristorante JOIN utente AS u ON re.id_utente = u.id_utente WHERE u.username = '" . $_SESSION["usernamelog"] . "'");
       ?>
-
       <h2 class="mb-3">Le tue recensioni</h2>
       <?php if ($result->num_rows > 0): ?>
         <div class="table-responsive">
@@ -81,11 +79,8 @@
       <?php else: ?>
         <p class="text-danger">Nessuna recensione effettuata!</p>
       <?php endif; ?>
-
       <hr class="my-5">
-
       <div class="row g-4">
-        <!-- Specifiche ristorante -->
         <div class="col-md-6">
           <h2>Specifiche ristorante</h2>
           <form action="info_ristorante.php" method="post">
@@ -97,8 +92,6 @@
             <button type="submit" class="btn btn-success">Invia</button>
           </form>
         </div>
-
-        <!-- Nuova recensione -->
         <div class="col-md-6">
           <h2>Lascia una nuova recensione</h2>
           <form action="./inserisciRecensione.php" method="post">
@@ -120,7 +113,7 @@
             <button type="submit" class="btn btn-success">Invia</button>
             <?php
               if (isset($_SESSION["esitoRecensione"])) {
-                echo "<p class='text-info mt-2'>".$_SESSION["esitoRecensione"]."</p>";
+                echo "<p class='text-success mt-2'>".$_SESSION["esitoRecensione"]."</p>";
                 unset($_SESSION["esitoRecensione"]);
               }
             ?>
@@ -128,8 +121,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Logout modal -->
     <div id="apriChiudiFinestra" class="divInTheMiddle d-none bg-white p-5 rounded-3 shadow-lg text-center">
       <button type="button" class="btn-close float-end" onclick="ChiudiFinestra()" aria-label="Chiudi"></button>
       <p class="fs-4 fw-bold">Vuoi effettuare il logout?</p>
@@ -137,7 +128,6 @@
         <button type="submit" class="btn btn-danger">Logout</button>
       </form>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="js/script.js"></script>

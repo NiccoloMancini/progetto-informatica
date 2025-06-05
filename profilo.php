@@ -23,6 +23,9 @@
         <span class="fs-4 fw-bold">ICCHESIMANGIA</span>
       </a>
       <div class="d-flex align-items-center gap-2 ms-auto">
+        <a href="./benvenuto.php" class="btn btn-outline-primary d-flex align-items-center gap-1">
+          <i class="bi bi-house fs-5"></i>
+        </a>
         <a href="./profilo.php" class="btn btn-outline-primary d-flex align-items-center gap-1">
           <i class="bi bi-person fs-5"></i>
         </a>
@@ -56,15 +59,13 @@
         </div>
       </div>
     </main>
-
-    <div id="apriChiudiFinestra" class="divInTheMiddle d-none bg-white p-5 rounded-3 text-center shadow-lg">
-      <button type="button" class="btn btn-danger fw-bold position-absolute top-0 end-0 m-3" onclick="ChiudiFinestra()">×</button>
-      <p class="fs-2 fw-bold mt-4">EFFETTUA LOGOUT?</p>
+    <div id="apriChiudiFinestra" class="divInTheMiddle d-none bg-white p-5 rounded-3 shadow-lg text-center">
+      <button type="button" class="btn-close float-end" onclick="ChiudiFinestra()" aria-label="Chiudi"></button>
+      <p class="fs-4 fw-bold">Vuoi effettuare il logout?</p>
       <form action="./logout.php">
-        <button type="submit" class="btn btn-outline-danger">Logout</button>
+        <button type="submit" class="btn btn-danger">Logout</button>
       </form>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
   </body>
